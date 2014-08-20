@@ -1,0 +1,55 @@
+<html>
+<head>
+	<title>Angular Example</title>
+	<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.min.js'></script>
+	<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular-route.min.js'></script>
+</head>
+<body>
+	<div ng-app='demoApp'>
+		<a href="#/">Friends</a> | <a href="#/products">Products</a>
+
+		<div ng-view="">
+
+		</div>
+	</div>
+	<script>
+	var demoApp = angular.module('demoApp', ['ngRoute']);
+
+	demoApp.config(function($routeProvider){
+		$routeProvider
+			.when('/',
+			{
+				templateUrl: 'partials/view1.html',
+				controller: 'SimpleController'
+			})
+			.when('/partial2', 
+			{
+				templateUrl: 'partials/view2.html',
+				controller: 'NotSoSimpleController'
+			})
+			.otherwise({
+				redirectTo: '/'
+			});
+	});
+	demoApp.controller('SimpleController', function($scope){
+		$scope.friends = [
+      {name:'John', age:25, gender:'boy'},
+      {name:'Jessie', age:30, gender:'girl'},
+      {name:'Johanna', age:28, gender:'girl'},
+      {name:'Joy', age:15, gender:'girl'},
+      {name:'Mary', age:28, gender:'girl'},
+      {name:'Peter', age:95, gender:'boy'},
+      {name:'Sebastian', age:50, gender:'boy'},
+      {name:'Erika', age:27, gender:'girl'},
+      {name:'Patrick', age:40, gender:'boy'},
+      {name:'Samantha', age:60, gender:'girl'}
+    	];
+	});
+
+	demoApp.controller('NotSoSimpleController', function($scope){
+
+	})
+
+	</script>
+</body>
+</html>

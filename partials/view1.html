@@ -1,0 +1,13 @@
+<div ng-controller = "SimpleController">
+	<h1>Friends</h1>
+	<input type="text" placeholder="search" ng-model="filter_name"/> {{filter_name}}
+	<ul>
+		<li ng-repeat="friend in friends | filter: filter_name | orderBy: 'name' ">
+			{{friend.name | uppercase}} - age: {{friend.age}}
+		</li>
+	</ul>
+	<h2>Add a new friend</h2>
+	Name: <input type="text" placeholder="name" ng-model="new_friend.name" />
+	Age: <input type='text' placeholder='age' ng-model="new_friend.age"/>
+	<button ng-click="addFriend()">Add a new friend</button>
+</div>
